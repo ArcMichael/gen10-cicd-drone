@@ -28,7 +28,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DRONE_SERVER=drone-server:9000
+      - DRONE_SERVER=cicd.internal.gen10.mly0110.org.cn:9000
       - DRONE_SECRET=${DRONE_SECRET}
     extra_hosts:
       - cicd.internal.gen10.mly0110.org.cn:192.168.3.215
