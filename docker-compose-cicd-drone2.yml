@@ -20,6 +20,8 @@ services:
 
       - DRONE_LOGS_PRETTY=true
       - DRONE_LOGS_COLOR=true
+    dns:
+      - 192.168.3.210
 
   # runner for docker version
   drone-runner:
@@ -34,3 +36,5 @@ services:
       - DRONE_RPC_PROTO=${DRONE_RPC_PROTO}
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
       - DRONE_RUNNER_CAPACITY=3
+    dns:
+      - 192.168.3.210
