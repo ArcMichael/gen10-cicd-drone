@@ -9,8 +9,8 @@ services:
     volumes:
       - ./drone-data:/var/lib/drone/
       - /var/run/docker.sock:/var/run/docker.sock
-    env_file:
-      - ./drone.env
+    # env_file:
+    #   - ./drone.env
     restart: always
     environment:
       - DRONE_GITHUB_SKIP_VERIFY=true
@@ -36,8 +36,8 @@ services:
       - drone-server
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    env_file:
-      - ./drone.env
+    # env_file:
+    #   - ./drone.env
     environment:
       - DRONE_RPC_SERVER=drone-server:80
       # Variables below set via drone.env file
