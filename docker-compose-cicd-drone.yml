@@ -1,0 +1,65 @@
+version: '2'
+
+services:
+
+  drone-server:
+
+    image: drone/drone:1
+
+    container_name: drone-server
+
+    ports:
+
+      - '10081:80'      # Web管理面板的入口 PROTO=http  时使用该端口
+
+    volumes:
+
+      - /var/run/docker.sock:/var/run/docker.sock   # docker.sock [1]
+
+      - /var/data/drone/:/var/lib/drone             # drone数据存放路径
+
+    environment:
+
+      - DRONE_GITHUB_CLIENT_ID=${DRONE_GITHUB_CLIENT_ID}  #上面申请的github CLIENT_ID
+
+      - DRONE_GITHUB_CLIENT_SECRET=${DRONE_GITHUB_CLIENT_SECRET} #上面申请的github CLIENT_SECRET
+
+      - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}   #你的密钥MD5值即可
+
+      - DRONE_SERVER_HOST=${DRONE_SERVER_HOST}
+
+      - DRONE_SERVER_PROTO=${DRONE_SERVER_PROTO} #http 或 https  
+
+      - TZ=Asia/Shanghai
+
+    restart: always
+
+  drone-agent:
+
+    image: drone/drone-runner-docker:1
+
+    container_name: drone-runner
+
+    depends_on:
+
+      - drone-server
+
+    volumes:
+
+      - /var/run/docker.sock:/var/run/docker.sock # docker.sock [1]
+
+    environment:
+
+      - DRONE_RPC_PROTO=${DRONE_SERVER_PROTO} #http 或 https
+
+      - DRONE_RPC_HOST=${DRONE_RPC_HOST}
+
+      - DRONE_RPC_SECRET=${DRONE_RPC_SECRET} #你的密钥MD5值即可,跟上面的保持一致
+
+      - DRONE_RUNNER_CAPACITY=2 #最多同时运行几个
+
+      - DRONE_RUNNER_NAME=你的IP
+
+      - TZ=Asia/Shanghai
+
+    restart: always
