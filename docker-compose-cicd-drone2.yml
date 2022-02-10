@@ -30,6 +30,7 @@ services:
     environment:
       - DRONE_SERVER=drone-server:9000
       - DRONE_SECRET=${DRONE_SECRET}
-
+    extra_hosts:
+      - cicd.internal.gen10.mly0110.org.cn:192.168.3.215
 volumes:
   drone-server-data:
