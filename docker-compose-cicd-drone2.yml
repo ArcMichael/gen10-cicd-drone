@@ -21,6 +21,9 @@ services:
       - DRONE_LOGS_PRETTY=true
       - DRONE_LOGS_COLOR=true
 
+    extra_hosts:
+      - cicd.internal.gen10.mly0110.org.cn:192.168.3.215
+
   drone-agent:
     image: drone/drone-runner-docker:1
     restart: always
@@ -33,3 +36,6 @@ services:
       - DRONE_RPC_PROTO=${DRONE_RPC_PROTO}
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
       - DRONE_RUNNER_CAPACITY=2
+
+    extra_hosts:
+      - cicd.internal.gen10.mly0110.org.cn:192.168.3.215
