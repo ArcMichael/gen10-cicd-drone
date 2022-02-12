@@ -35,7 +35,7 @@ services:
       - DRONE_RPC_HOST=${DRONE_RPC_HOST}
       - DRONE_RPC_PROTO=${DRONE_RPC_PROTO}
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
-      - DRONE_RUNNER_CAPACITY=2
+      - DRONE_RUNNER_CAPACITY=4
 
     extra_hosts:
       - cicd.internal.gen10.mly0110.org.cn:192.168.3.215
