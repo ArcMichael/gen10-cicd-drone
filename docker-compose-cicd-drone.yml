@@ -6,7 +6,7 @@ services:
     ports:
       - 8081:80
     volumes:
-      - ./:/data
+      - /docker/drone-server/data:/data
     restart: always
     environment:
       - DRONE_SERVER_HOST=${DRONE_SERVER_HOST}
