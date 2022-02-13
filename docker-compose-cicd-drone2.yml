@@ -21,8 +21,9 @@ services:
       - DRONE_LOGS_PRETTY=true
       - DRONE_LOGS_COLOR=true
 
-    extra_hosts:
-      - cicd.internal.gen10.mly0110.org.cn:192.168.3.215
+
+    dns:
+      - 192.168.3.210
 
   drone-agent:
     image: drone/drone-runner-docker:1
@@ -41,5 +42,5 @@ services:
 
       - DRONE_USER_CREATE=${DRONE_USER_CREATE}
 
-    extra_hosts:
-      - cicd.internal.gen10.mly0110.org.cn:192.168.3.215
+    dns:
+      - 192.168.3.210
