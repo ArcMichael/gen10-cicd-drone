@@ -24,6 +24,7 @@ services:
 
     dns:
       - 192.168.3.210
+      - 4.4.4.4
 
   drone-agent:
     image: drone/drone-runner-docker:1
@@ -44,3 +45,4 @@ services:
 
     dns:
       - 192.168.3.210
+      - 4.4.4.4
