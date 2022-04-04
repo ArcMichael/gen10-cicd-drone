@@ -3,6 +3,7 @@ version: '3'
 services:
 
   drone-server:
+    container_name: drone-server
     image: 192.168.3.200:80/library/drone/drone:2.9.1
     ports:
       - 8081:80
@@ -25,6 +26,7 @@ services:
       - cicd.internal.gen10.mly0110.org.cn:192.168.3.215
 
   drone-agent:
+    container_name: drone-agent
     image: 192.168.3.200:80/library/drone/drone-runner-docker:1
     restart: always
     depends_on:
